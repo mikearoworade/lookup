@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3 class="greet-user">Hi, {{ current_user.username }}!</h3>
+{% if form %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <div class="img-say-something">
+        <img class="img-home" src="{{ user.avatar(60) }}" alt="{{ current_user.username }}"> 
+        <p class="say-something">
+            {% for error in form.post.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.post(class="form-control no-resize-textarea-both", placeholder="Say Something!") }}
+        </p>
+    </div>
+    <div>
+        {{ form.submit(class="submit-post") }}
+    </div>
+</form>
+{% endif %}
+<div class="follower-post">
+    {% for post in posts %}
+    {% include '_post.html' %}
+    {% endfor %}
+</div>
+<br>
+<div class="pagination">
+    {% if prev_url %}
+    <a href="{{ prev_url }}">Newer posts</a>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }}">Older posts</a>
+    {% endif %}
+</div>
+{% endblock %}

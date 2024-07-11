@@ -1,0 +1,28 @@
+/* styles.css */
+
+nav {
+    background-color: #333; /* Background color of the nav bar */
+    overflow: hidden; /* Ensures that child elements do not overflow */
+}
+
+nav ul {
+    list-style-type: none; /* Removes default list styles */
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Centers the nav links */
+}
+
+nav ul li {
+    display: inline; /* Displays list items inline */
+}
+
+nav ul li a {
+    display: inline-block; /* Makes links behave as blocks */
+    padding: 10px 20px; /* Adds padding inside each link */
+    color: white; /* Text color of the links */
+    text-decoration: none; /* Removes underline from links */
+}
+
+nav ul li a:hover {
+    background-color: #555; /* Background color on hover */
+}

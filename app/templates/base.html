@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/style.css') }}">
+    {% if title %}
+    <title>{{ title }} - Lookup</title>
+    {% else %}
+    <title>Welcome to Lookup!</title>
+    {% endif %}
+</head>
+<body>
+    <header>
+        <div class="brand_img" id="brand_img">
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt=""></a>
+        </div>
+        <ul class="nav-item">
+            {% if current_user.is_anonymous %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% else %}
+            <li><a href="{{ url_for('explore') }}">Explore</a></li>
+            <li> <a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
+        </ul>
+    </header>
+
+    <div class="main">
+        <div class="flash-container">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
+        {% block content %}{% endblock %}  
+    </div>
+</body>
+</html>

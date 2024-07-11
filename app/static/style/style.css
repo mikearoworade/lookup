@@ -1,0 +1,288 @@
+/******************** GENERAL / UTILITIES****************************************/
+:root {
+    --primary-color: #0066cc;
+    /* --primary-color: #015999; */
+    --gray-dark: #adb5bd;
+    --gray-light: #eaeaea;
+    --color-success: #198754;
+    --color-danger: #D0312D;
+    --color-text: #1E1C1B;
+    --color-warning: #ffc107;
+    --color-info: #0dcaf0;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--gray-light);
+    font-size: 1rem;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", 
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 
+    "Noto Color Emoji";
+}
+
+header {
+    height: 65px;
+    background: #FFF;
+    box-shadow: 0 4px 2px -2px var(--gray-dark);
+    /* border-bottom: 1px solid #CCCCCC; */
+    padding: 0 30px 0 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main {
+    padding: 0 30px 0 30px;
+    max-width: 1200px;
+    margin: 20px auto 0 auto;
+}
+
+header .nav-item {
+    list-style-type: none; /* Removes default list styles */
+    margin: 0;
+    padding: 0;
+}
+
+header .nav-item li {
+    display: inline; /* Displays list items inline */
+    margin-top: 20px;
+}
+
+header .nav-item li a {
+    display: inline-block; /* Makes links behave as blocks */
+    padding: 10px 20px; /* Adds padding inside each link */
+    color: var(--primary-color); /* Text color of the links */
+    font-weight: 700;
+    text-decoration: none; /* Removes underline from links */
+    font-size: 1.2rem;
+}
+
+.flash-container {
+    color: var(--primary-color);
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.flash-container ul {
+    list-style-type: none; /* Removes default list styles */
+    margin: 0;
+    padding: 0;
+}
+
+.login-form, .register-form, .edit-form{
+    width: 100%;
+    margin: 12rem auto 0 auto;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: #fff;
+    border: 2px solid var(--primary-color);
+}
+
+.register-form, .edit-form {
+    margin: 7rem auto 0 auto
+}
+
+
+.login-form h2, .register-form h2, .edit-form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color); 
+}
+
+.login-form .form-group, .register-form .form-group, .edit-form .form-groupp {
+    margin-bottom: 20px;
+}
+
+.login-form .form-control .register-form .form-control, .edit-form .form-control{
+    height: 40px;
+}
+
+.edit-form .no-resize-textarea {
+    resize: vertical; /* or 'none' to completely disable resizing */
+    max-width: 100%; /* Example of setting a maximum width */
+    height: 100px;
+}
+
+.edit-profile a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.submit {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+}
+
+.submit-post {
+    display: block;
+    width: 100px;
+    margin-top: 0.1rem;
+    padding: 0.5rem;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 0.7rem;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+}
+
+label {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.form-group {
+    position: relative;
+    margin: 0 auto 1.25rem auto;
+    padding: 0.25rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: none;
+    outline: none;
+}
+
+/**************Index Page****************/
+.img-home {
+    border-radius: 50%;
+    padding-right: 10px;
+}
+
+.img-say-something {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+.say-something {
+    flex: 1;
+}
+
+.no-resize-textarea-both {
+    resize: none;
+    border-radius: 0px !important;
+    background-color: var(--gray-light) !important;
+    border: none !important;
+    border-bottom: 1px solid var(--gray-dark) !important;
+    padding-left: 0px !important;
+    width: 100%; /* Example of setting a maximum width */
+}
+
+.submit-post {
+    display: block;
+    width: 100px;
+    margin-top: 0.1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 0.7rem;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    float: right;
+}
+
+.follower-post {
+    clear: both;
+    padding-top: 10px;
+}
+
+/************Edit Profile****************/
+.profile-table td {
+    vertical-align: top;
+}
+
+.profile-table .username, .profile-table p{
+    margin:  0;
+    padding-bottom: 12px;
+}
+
+/***********************Post***************/
+.post-table {
+    width: 100%;
+    border: 1px solid var(--gray-dark);
+    border-left: 2px solid var(--gray-dark);
+    border-right: 2px solid var(--gray-dark);
+}   
+
+
+
+.post-table img{
+    border-radius: 50%;
+}
+
+/************************Pagination****************/
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin: 0 4px;
+    border: 1px solid var(--primary-color); /* Border for links */
+}
+  
+  /* Style for active/current page */
+.pagination a.active {
+    background-color: var(--primary-color);
+    color: var(--gray-light);
+    border: 1px solid var(--color-success)
+}
+  
+  /* Hover effect */
+.pagination a:hover:not(.active) {
+    background-color: var(--primary-color);
+    color: var(--gray-light)
+}
+  
+/*******************MEDIA QUERY*****************/
+@media (min-width: 576px) {
+    .login-form, .register-form, .edit-form{
+        max-width:540px;
+        margin: 8rem auto 0 auto;
+    }
+    
+    .register-form, .edit-form {
+        margin: 5rem auto 0 auto
+    }
+}
