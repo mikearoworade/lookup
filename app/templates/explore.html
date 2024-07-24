@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if users %}
+<div class="container">
+    <form method="POST" action="{{ url_for('explore') }}">
+      {{ search_form.hidden_tag() }}
+      <div class="form-group search-div">
+        {{ search_form.search(class="form-control", placeholder="Search users") }}
+        {{ search_form.submit(class="submit-search") }}
+      </div>
+    </form>
+</div>
+
+<div class="follower_following">
+  <h3>Results</h3>
+  <hr>
+  {% for user in users %}
+  <div class="follower_following">
+    <div class="follower_following-detail">
+      <div class="follower_following-detail-left">
+        <a href="{{ url_for('user', username=user.username) }}"><img class="circular-portrait" src="{{ url_for('static', filename='profile_pics/' +user.image) if user.image else url_for('static', filename='profile_pics/default.png') }}" alt="profile Image" class="img-thumbnail" width="65"></a>
+        <div class="follower_following-username-bio" >
+          <a class="follower_following-username" href="{{ url_for('user', username=user.username) }}">{{ user.username }}</a>
+          <p class="follower_following-bio"><strong>Bio:</strong> {{ user.about_me }}</p>
+        </div>
+      </div>
+      <div class="follower_following-detail-right">
+        {% if current_user.is_authenticated and current_user != user %}
+        {% if current_user.is_following(user) %}
+          <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
+            {{ unfollow_form.hidden_tag() }}
+            {{ unfollow_form.submit(class="unfollow") }}
+          </form>
+        {% else %}
+          <form action="{{ url_for('follow', username=user.username) }}" method="post">
+            {{ follow_form.hidden_tag() }}
+            {{ follow_form.submit(class="follow") }}
+          </form>
+        {% endif %}
+        {% endif %}
+      </div>
+  </div>
+  <hr>
+  {% endfor %}
+  </div>
+</div>
+{% else %}
+  
+<div class="container">
+    <form method="POST" action="{{ url_for('explore') }}">
+      {{ search_form.hidden_tag() }}
+      <div class="form-group search-div">
+        {{ search_form.search(class="form-control", placeholder="Search users") }}
+        {{ search_form.submit(class="submit-search") }}
+      </div>
+    </form>
+</div>
+
+<div class="follower-post">
+    {% for post in posts %}
+    {% include '_post.html' %}
+    {% endfor %}
+</div>
+<br>
+<div class="pagination">
+    {% if prev_url %}
+    <a href="{{ prev_url }}">Newer posts</a>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }}">Older posts</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

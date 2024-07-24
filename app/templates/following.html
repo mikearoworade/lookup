@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h3 class="greet-user"><a href="{{ url_for('user', username=current_user.username) }}">{{ user.username }}</a> is following</h3>
+  <div class="follower_following">
+    <hr>
+    {% for followed in following %}
+    <div class="follower_following">
+      <div class="follower_following-detail">
+        <div class="follower_following-detail-left">
+          <a href="{{ url_for('user', username=followed.username) }}"><img class="circular-portrait" src="{{ url_for('static', filename='profile_pics/' +followed.image) if followed.image else url_for('static', filename='profile_pics/default.png') }}" alt="profile Image" class="img-thumbnail" width="65"></a>
+          <div class="follower_following-username-bio" >
+            <a class="follower_following-username" href="{{ url_for('user', username=followed.username) }}">{{ followed.username }}</a>
+            <p class="follower_following-bio"><strong>Bio:</strong> {{ followed.about_me }}</p>
+          </div>
+        </div>
+        <div class="follower_following-detail-right">
+          {% if current_user.is_authenticated and current_user != followed %}
+          {% if current_user.is_following(followed) %}
+            <form action="{{ url_for('unfollow', username=followed.username) }}" method="post">
+              {{ unfollow_form.hidden_tag() }}
+              {{ unfollow_form.submit(class="unfollow") }}
+            </form>
+          {% else %}
+            <form action="{{ url_for('follow', username=followed.username) }}" method="post">
+              {{ follow_form.hidden_tag() }}
+              {{ follow_form.submit(class="follow") }}
+            </form>
+          {% endif %}
+          {% endif %}
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+    </div>
+  </div>
+{% endblock %}

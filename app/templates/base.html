@@ -21,7 +21,7 @@
             <li><a href="{{ url_for('register') }}">Register</a></li>
             {% else %}
             <li><a href="{{ url_for('explore') }}">Explore</a></li>
-            <li> <a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+            <li> <a href="{{ url_for('messages') }}">Message</a></li>
             <li><a href="{{ url_for('logout') }}">Logout</a></li>
             {% endif %}
         </ul>
@@ -41,5 +41,6 @@
         </div>
         {% block content %}{% endblock %}  
     </div>
+    {{ moment.include_moment() }}
 </body>
 </html>

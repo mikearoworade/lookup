@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3 class="greet-user">Hi, {{ current_user.username }}!</h3>
+<h3 class="greet-user">Hi, <a href="{{ url_for('user', username=current_user.username) }}">{{ current_user.username }}!</a></h3>
 {% if form %}
 <form action="" method="post">
     {{ form.hidden_tag() }}
     <div class="img-say-something">
-        <img class="img-home" src="{{ user.avatar(60) }}" alt="{{ current_user.username }}"> 
+        <!-- <img class="img-home" src="{{ user.avatar(60) }}" alt="{{ current_user.username }}">  -->
+        <img class="circular-portrait" src="{{ url_for('static', filename='profile_pics/' + user.image) if user.image else url_for('static', filename='profile_pics/default.png') }}" alt="Profile Image" class="img-thumbnail" width="60">
         <p class="say-something">
             {% for error in form.post.errors %}
             <span style="color: red;">[{{ error }}]</span>
@@ -20,8 +21,9 @@
 </form>
 {% endif %}
 <div class="follower-post">
+    <!-- <!-- <p>Number of posts on this page: {{ posts.items|length }}</p> -->
     {% for post in posts %}
-    {% include '_post.html' %}
+        {% include '_post.html' %}
     {% endfor %}
 </div>
 <br>

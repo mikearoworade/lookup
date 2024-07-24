@@ -20,7 +20,7 @@ body {
     margin: 0;
     background-color: var(--gray-light);
     font-size: 1rem;
-    font-family: "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", 
+    font-family: Poppins, Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", 
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 
     "Noto Color Emoji";
 }
@@ -52,6 +52,9 @@ header .nav-item {
 header .nav-item li {
     display: inline; /* Displays list items inline */
     margin-top: 20px;
+    padding: 5px 0 5px 0 ; /* Adds padding inside each link */
+    border-radius: 30%;
+    border: 1px solid var(--primary-color);
 }
 
 header .nav-item li a {
@@ -74,6 +77,7 @@ header .nav-item li a {
     margin: 0;
     padding: 0;
 }
+
 
 .login-form, .register-form, .edit-form{
     width: 100%;
@@ -109,9 +113,20 @@ header .nav-item li a {
     height: 100px;
 }
 
+.edit-profile {
+    margin: 0 0 10px 0;
+}
+
 .edit-profile a {
     text-decoration: none;
     color: var(--primary-color);
+
+}
+
+.password-reset a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .submit {
@@ -140,6 +155,35 @@ header .nav-item li a {
     font-size: 1.2em;
     font-weight: bold;
     border: none;
+}
+
+.follow, .unfollow {
+    display: block;
+    width: 90px;
+    margin-top: 0.1rem;
+    margin-bottom: 0.4rem;
+    padding: 0.4rem;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 700;
+}
+
+.unfollow:hover:after{
+    content:'changed text';
+}
+
+.followers, .following {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.greet-user a {
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
 label {
@@ -175,9 +219,8 @@ label {
 }
 
 /**************Index Page****************/
-.img-home {
+.circular-portrait {
     border-radius: 50%;
-    padding-right: 10px;
 }
 
 .img-say-something {
@@ -187,6 +230,7 @@ label {
     width: 100%;
 }
 .say-something {
+    margin-left: 10px;
     flex: 1;
 }
 
@@ -239,12 +283,19 @@ label {
     border-right: 2px solid var(--gray-dark);
 }   
 
-
-
 .post-table img{
     border-radius: 50%;
 }
 
+.post-table td {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+.post_username {
+    text-decoration: none;
+    color: var(--primary-color);
+}
 /************************Pagination****************/
 .pagination {
     display: flex;
@@ -254,6 +305,17 @@ label {
 
 .pagination a {
     color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin: 0 4px;
+    border: 1px solid var(--primary-color); /* Border for links */
+}
+
+.pagination .active_page {
+    background-color: var(--primary-color);
+    color: white;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
@@ -274,15 +336,96 @@ label {
     background-color: var(--primary-color);
     color: var(--gray-light)
 }
-  
+
+
+/*********************Search********************/
+.search-div {
+    display: flex;
+    max-width: 500px;
+}
+.submit-search {
+    border: 1px solid var(--primary-color);
+    border-radius: 10%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none;
+    background-color: white;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.search-div .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border: 1px solid var(--primary-color);
+}
+
+
+/********************Followers and Following Style *************/
+.follower_following-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.follower_following-detail-left {
+    display: flex;
+    align-items: center;
+}
+.follower_following-username,
+.follower_following-bio {
+    margin: 0 0 0 5px;
+    padding: 0;
+}
+
+.follower_following-username
+{
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/*************** Messages **********************/
+.message-intro {
+    display: flex;
+    justify-content: space-between;
+}
+
+.message-intro button{
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    height: 35px;
+    border: 1px solid var(--primary-color);
+    border-radius: 20%;
+}
 /*******************MEDIA QUERY*****************/
 @media (min-width: 576px) {
     .login-form, .register-form, .edit-form{
         max-width:540px;
-        margin: 8rem auto 0 auto;
+        margin: 5rem auto 0 auto;
     }
     
     .register-form, .edit-form {
         margin: 5rem auto 0 auto
+    }
+}
+@media (max-width: 576px) {
+    header .nav-item li a {
+        display: inline-block; /* Makes links behave as blocks */
+        padding-left: 3px;
+        padding-right: 3px;
+        color: var(--primary-color); /* Text color of the links */
+        font-weight: 700;
+        text-decoration: none; /* Removes underline from links */
+        font-size: 1rem;
+    }
+
+    header img {
+        width: 120px;
+        height: 40px;
     }
 }

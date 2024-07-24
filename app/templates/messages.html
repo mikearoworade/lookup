@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="message-intro">
+  <h3>Messages</h3>
+  <button>New Message</button>
+</div>
+<div class="container">
+    <form method="POST" action="">
+      {{ search_form.hidden_tag() }}
+      <div class="form-group search-div">
+        {{ search_form.search(class="form-control", placeholder="Search Messages") }}
+        {{ search_form.submit(class="submit-search") }}
+      </div>
+    </form>
+</div>
+{% endblock %}

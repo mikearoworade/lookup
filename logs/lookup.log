@@ -82,3 +82,5 @@ sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
 [parameters: ('2024-07-03 21:36:51.208440', 1)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 2024-07-04 17:43:33,415 INFO: Lookup startup [in /home/mike/lookup/app/__init__.py:42]
+2024-07-18 23:20:43,101 INFO: Lookup startup [in /home/mike/lookup/app/__init__.py:44]
+2024-07-19 13:56:49,819 INFO: Lookup startup [in /home/mike/lookup/app/__init__.py:44]

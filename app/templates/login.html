@@ -26,6 +26,10 @@
             <div class="form-group">
                 {{ form.submit(class="submit") }}
             </div>
+            <div class="form-group password-reset">
+                Forgot Your Password?
+                <a href="{{ url_for('reset_password_request') }}">Click to Reset</a>
+            </div>
         </form>
     </div>
 </div>
